@@ -1,0 +1,20 @@
+.component-app {
+    display: flex;
+    flex-direction: column;;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    height: 69%;
+    width: 69%;
+    margin: 8% 0 0 15.5%;
+  }
+  .wolf{
+    margin-top: 0px;
+    height: 50px;
+    width: 50px;
+  }
+  .calcComp{
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  

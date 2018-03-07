@@ -1,0 +1,35 @@
+.container-thumbs {
+  
+    /* max-width: 110em;
+    margin-top: 7em;
+    margin-left: 15em; */
+    padding: 10% 25% 0 20%;
+    /* can't have:
+    overflow: hidden; */
+   }
+   
+   .gallery {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+   }
+
+   
+   .thumbnail {
+    background-color: transparent;
+    /* top:0;right:0;bottom:0;left:0;
+    transition: all .3s; */
+    height: 150px;
+    width: 150px;
+    border: none;
+    margin: 5% 10% 0 10%;
+   }
+   
+   /* .gallery_link:hover .thumbnail {
+    max-width: 120%;
+    left: -5%;
+    top: -5%;
+    z-index: 1;
+    zoom: 110%;
+   } */
