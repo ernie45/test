@@ -1,28 +1,395 @@
-.App {
+body {
+  background-image: url('https://craftburgercromer.co.uk/wp-content/uploads/2016/08/Wood-Background-1-1024x700.jpg');
+  /* background-color: #282a2d; */
+  
+  background-repeat: repeat;
+  color: rgb(248, 248, 248);
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: .2rem;
+  margin: 0;
+  overflow: hidden;
+  perspective: 1000px;
+  text-transform: uppercase;
+}
+.site-wrap {
+  transition: transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+  background-color: transparent;
+}
+.site-wrap.show-all {
+  transform: scale(0.3);
+  background-color: transparent;
+}
+.panel-wrap {
+  height: 100vh;
+  width: 100vw;
+}
+h1 {
+  font-size: 20vmin;
+  margin: 0;
+}
+.panel-wrap {
+  perspective: 2000px;
+  transition: transform 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.panel-wrap.animate--shrink,
+.panel-wrap.animate--tilt,
+.panel-wrap.animate--tilt2 {
+  transition: transform 0.3s cubic-bezier(0.55, 0, 0.1, 1) 0.3s;
+}
+
+.panel {
+  background-color: transparent;
+  height: 100vh;
+  position: absolute;
+  transition: transform 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  width: 100vw;
+  will-change: transform;
+  /* padding-bottom: -25px; */
+  /* background-image: url(../assets/background.jpeg);
+  background-size: cover; */
+}
+.panel:before {
+  /* background-color: transparent; */
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: background-color 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: 2;
+}
+.show-all .panel:before {
+  pointer-events: all;
+}
+.show-all .panel:hover:before {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+.animate--shrink.animate .panel {
+  transform: scale(0.9);
+}
+.animate--tilt.animate .panel {
+  transform: scale(0.6) rotateY(-25deg);
+}
+.animate--tilt2.animate .panel {
+  transform: scale(0.8) rotateX(25deg);
+}
+.panel h1 {
+  cursor: default;
+  left: 50%;
+  line-height: 1;
+  position: absolute;
   text-align: center;
+  /* fixes clock position */
+  top: 42%;
+  transform: translateX(-50%) translateY(-50%);
+  user-select: none;
+}
+.panel[data-x-pos="-2"] {
+  left: -200%;
+}
+.panel[data-x-pos="-1"] {
+  left: -100%;
+}
+.panel[data-x-pos="1"] {
+  left: 100%;
+}
+.panel[data-x-pos="2"] {
+  left: 200%;
+}
+.panel[data-y-pos="-2"] {
+  top: 200%;
+}
+.panel[data-y-pos="-1"] {
+  top: 100%;
+}
+.panel[data-y-pos="1"] {
+  top: -100%;
+}
+.panel[data-y-pos="2"] {
+  top: -200%;
+}
+.panel__zoom {
+  cursor: pointer;
+  left: 50%;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%) translateY(-12vmin);
+  transition: opacity 0.9s cubic-bezier(0.55, 0, 0.1, 1);
+  user-select: none;
+  z-index: 10;
+}
+.panel__zoom:hover {
+  opacity: 1;
+}
+.show-all .panel__zoom {
+  pointer-events: none;
+}
+.panel__nav {
+  cursor: pointer;
+  opacity: .9;
+  position: absolute;
+  transition: opacity 0.9s cubic-bezier(0.55, 0, 0.1, 1);
+  user-select: none;
+  will-change: opacity;
+}
+.panel__nav--up {
+  left: 50%;
+  top: 1rem;
+  transform: translateX(-50%);
+}
+.panel__nav--left {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg) translateX(-100%);
+  transform-origin: top left;
+}
+.panel__nav--left-top {
+  left: 1rem;
+  top: 1rem;
+}
+.panel__nav--left-down {
+  bottom: 1rem;
+  left: 1rem;
+}
+.panel__nav--right {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg) translateX(100%);
+  transform-origin: top right;
+}
+.panel__nav--right-top {
+  right: 1rem;
+  top: 1rem;
+}
+.panel__nav--right-down {
+  bottom: 1rem;
+  right: 1rem;
+}
+.panel__nav--down {
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.panel__nav:hover {
+  opacity: 1;
+}
+.panel__animation-list {
+  font-size: 3.3vmin;
+  left: 50%;
+  position: absolute;
+  top: 45%;
+  transform: translateX(-50%) translateY(-50%) translateY(14vmin);
+}
+.panel__animation-list span {
+  cursor: pointer;
+  display: inline-block;
+  opacity: .2;
+  position: relative;
+  transition: opacity 0.9s cubic-bezier(0.55, 0, 0.1, 1);
+  user-select: none;
+}
+.panel__animation-list span:after {
+  border-bottom: .3vmin solid transparent;
+  bottom: 0;
+  content: "";
+  left: -1px;
+  position: absolute;
+  right: 0;
+  transition: border-color 0.9s cubic-bezier(0.55, 0, 0.1, 1);
+  width: 100%;
+}
+.panel__animation-list span.active,
+.panel__animation-list span:hover {
+  opacity: 1;
+}
+.panel__animation-list span.active:after,
+.panel__animation-list span:hover:after {
+  border-color: white;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#clock {
+  font-weight: 600;
+  font-size: 100px;
+  font: bolder;
+  color: rgb(33, 33, 33);
+  
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+
+.logoContainer {
+margin: auto;
+height: 200px;
+width: 300px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.allLoginContainer {
+  margin: auto;
+  margin-top: -40px;
+  height: 400px;
+  width: 550px;
+  background-color: #2b2d30;
 }
 
-.App-intro {
-  font-size: large;
+#login {
+float: left;
+margin-left: 70px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#signup {
+margin-left: 300px;
+}
+
+#signInEmailLabel {
+margin-top: 30px;
+}
+
+#signInEmailWrap {
+margin-top: 5px;
+color: black;
+}
+
+#signInPassLabel {
+margin-top: 30px;
+}
+
+#signInPassWrap {
+margin-top: 5px;
+color: black;
+}
+
+#rememberContainer {
+margin-top: 20px;
+}
+
+#signInButtonContainer {
+margin-top: 10px;
+}
+
+#signUpUsernameLabel {
+padding-top: 30px;
+}
+
+#signUpUsernameWrap {
+margin-top: 5px;
+color: black;
+}
+
+
+#signUpEmailLabel {
+margin-top: 15px;
+}
+
+#signUpEmailWrap {
+margin-top: 5px;
+color: black;
+}
+
+#signUpPasswordLabel {
+margin-top: 15px;
+}
+
+#signUpPasswordWrap {
+margin-top: 5px;
+color: black;
+}
+
+#signUpButtonContainer {
+margin-top: 20px;
+}
+
+#rememberLabel {
+float: left;
+}
+
+#rememberBox {
+margin-left: 140px;
+}
+
+#loginTitle {
+margin-top: 30px;
+}
+
+#createTitle {
+padding-top: 30px;
+}
+
+.button::-moz-focus-inner{
+border: 0;
+padding: 0;
+}
+
+.button{
+display: inline-block;
+*display: inline;
+zoom: 1;
+padding: 6px 20px;
+margin: 0;
+cursor: pointer;
+border: 1px solid #bbb;
+overflow: visible;
+font: bold 13px arial, helvetica, sans-serif;
+text-decoration: none;
+white-space: nowrap;
+color: #555;
+
+background-color: #ddd;
+background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(255,255,255,0)));
+background-image: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+background-image: -moz-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+background-image: -ms-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+background-image: -o-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+background-image: linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+
+-webkit-transition: background-color .2s ease-out;
+-moz-transition: background-color .2s ease-out;
+-ms-transition: background-color .2s ease-out;
+-o-transition: background-color .2s ease-out;
+transition: background-color .2s ease-out;
+background-clip: padding-box; /* Fix bleeding */
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+text-shadow: 0 1px 0 rgba(255,255,255, .9);
+
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+.button:hover{
+background-color: #eee;
+color: #555;
+}
+
+.button:active{
+background: #e9e9e9;
+position: relative;
+top: 1px;
+text-shadow: none;
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+.button[disabled], .button[disabled]:hover, .button[disabled]:active{
+border-color: #eaeaea;
+background: #fafafa;
+cursor: default;
+position: static;
+color: #999;
+/* Usually, !important should be avoided but here it's really needed :) */
+-moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+box-shadow: none !important;
+text-shadow: none !important;
 }
