@@ -1,0 +1,14 @@
+.container{
+    margin: 0 0 0 10%;
+    padding: 5%;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: fixed;
+    top: 100px;
+    color: navy;
+}
+.form-group{
+    margin-bottom:50px;
+}
+thead{
+    margin-bottom: 50px;
+}
