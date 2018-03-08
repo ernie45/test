@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 /** Require mongoose as the MongoDB ORM */
 const mongoose = require("mongoose");
 /** Require the express routing */
-const routes = require("./routes/users");
+const routes = require("./routes");
 // require schema from models
 const schemas = require("./models")
 
