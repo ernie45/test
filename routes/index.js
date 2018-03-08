@@ -12,7 +12,9 @@ const apiRoutes = require("./users");
 /** Note that this adds the final part to the path url */
 /** This changes the /suite and suite/:api paths in api folder to */
 /** /api/suite and /api/suite/:id */
-
 router.use("/api", apiRoutes);
+router.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 module.exports = router;
