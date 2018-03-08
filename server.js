@@ -9,8 +9,7 @@ const mongoose = require("mongoose");
 /** Require the express routing */
 const routes = require("./routes/users");
 // require schema from models
-const schemas = require("./models");
-const path = require("path");
+const schemas = require("./models")
 
 /** If 3001 isn't available, define a new port */
 var PORT = process.env.PORT || 3001;
@@ -25,8 +24,9 @@ app.use(express.static("client/build"));
 /** Listen in on the routes */
 app.use(routes);
 app.get("/", function(req, res){
-    console.log("why hwy");
+    console.log("UHU");
 });
+
 /** Make a connection to the MongoDB using the mongoose ORM */
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/homesuite"
