@@ -13,3 +13,5 @@ const apiRoutes = require("./users");
 /** This changes the /suite and suite/:api paths in api folder to */
 /** /api/suite and /api/suite/:id */
 router.use("/api", apiRoutes);
+
+module.exports = router;
