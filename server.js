@@ -23,7 +23,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("client/build"));
 /** Listen in on the routes */
 app.use(routes);
-
+app.get("/", function(req, res){
+    console.log("UHU");
+});
 
 /** Make a connection to the MongoDB using the mongoose ORM */
 mongoose.connect(
