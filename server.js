@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 // require schema from models
 const schemas = require("./models")
+const path = require("path");
 
 /** If 3001 isn't available, define a new port */
 var PORT = process.env.PORT || 3001;
