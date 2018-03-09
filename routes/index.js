@@ -14,7 +14,7 @@ const apiRoutes = require("./users");
 /** /api/suite and /api/suite/:id */
 router.use("/api", apiRoutes);
 
-app.get("*", function(req, res) {
+router.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
