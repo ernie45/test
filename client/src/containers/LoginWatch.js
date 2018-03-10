@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 /** Allows link between component and redux */
 import {connect} from "react-redux";
+import {pictures} from "../component/Links/assets";
 /** Import actions this component can dispatch */
 import {fetchLogin, fetchCreateUser, fetchPersist} from "../actions";
 import axios from "axios";
@@ -23,7 +24,7 @@ let LoginWatch = ({dispatch}) => {
         return (
             <div>
                 <div className="logoContainer">
-                    <img id="logoImage" src="HomeSuite.png" height="200px" width="300px"></img>
+                    <img id="logoImage" src={pictures.homesuite} height="200px" width="300px"></img>
                 </div>
                 <div className="allLoginContainer">
                     <div className="user-modal">

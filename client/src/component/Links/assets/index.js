@@ -1,4 +1,5 @@
 export const pictures = {
+    homesuite: require("./HomeSuite.png"),
     amazon: require("./amazon.png"),
     brain: require("./brain.png"),
     coding: require("./coding.png"),
