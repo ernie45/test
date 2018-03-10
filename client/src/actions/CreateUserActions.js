@@ -1,4 +1,5 @@
 import axios from "axios";
+import { loadavg } from "os";
 /** CREATE USER ACTIONS *////////////////////////////////////////////////////////////////////////////////////////////
 
 /** Export create actions action types */
@@ -25,18 +26,16 @@ export function fetchCreateUser(username, email, password) {
         /** Send post request with the data input by user */
         return axios.post('/api/create', { email: email, username: username, password: password })
             .then((res) => {
-                axios.get("/api/all").then(data => {
-                    let emailCheck = data.data.filter(dat => {return email === dat.email});
-                    if (!emailCheck.length){
-                        dispatch(receiveCreateUser(res));
-                        localStorage.setItem("persist", true);
-                        localStorage.setItem("username", username);
-                        window.location.reload();
-                    }
-                    else{
-                        console.log("Already exists");
-                    }
-                });
+                if (res.data){
+                    /** Persist the login state as well as the username and password */
+                    localStorage.setItem("persist", true);
+                    localStorage.setItem("username", username);
+                    localStorage.setItem("password", password);
+                    window.location.reload();
+                }
+                else{
+                    console.log("Unable to creaete a new user with the credentials provided");
+                }
             })
     }
 }

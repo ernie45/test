@@ -33,8 +33,10 @@ router.post('/auth', function(req, res) {
 });
 
 router.post('/create', function(req, res) {
-	controller.createUser(req)
-	res.send(true);
+	// console.log("Inside the backend");
+	controller.createUser(req, function(data){
+		res.send(data);
+	});
 });
 
 router.post('/persist', function(req, res) {
