@@ -25,12 +25,12 @@ app.use(express.static("client/build"));
 /** Listen in on the routes */
 app.use(routes);
 app.get("*", function(req, res) {
-    res.sendFile("index.html");
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
   });
 
 /** Make a connection to the MongoDB using the mongoose ORM */
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://heroku_11jr907d:iahv1evj5d1chm36qendibfcfi@ds261838.mlab.com:61838/heroku_11jr907d"
+    process.env.MONGODB_URI || "mongodb://localhost/homesuite"
 );
 mongoose.Promise = global.Promise;
 

@@ -13,7 +13,7 @@ const schema = new mongoose.Schema({
 
 
 // Create model in db if not already there, and export model for controller
-const User = mongoose.model('users', schema)
+const User = mongoose.model('users', schema);
 
 
 /** Export the Suite */
